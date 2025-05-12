@@ -1,0 +1,675 @@
+:root {
+    /* Default Theme (Light) */
+    --ui-bg: #f0f0f0;
+    --panel-bg: #fff;
+    --panel-text-color: #333;
+    --panel-border: 1px solid #eee;
+    --panel-heading-border: 1px solid #eee;
+    --button-bg: #eee;
+    --button-hover-bg: #ddd;
+    --button-active-bg: #cce;
+    --button-border: 1px solid #ccc;
+    --canvas-border: 1px solid #ccc;
+    /* Canvas background color is handled in JS */
+
+    /* New: Theme variables for logo and main title */
+    --logo-color: #333;
+    --title-color: #333;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column; /* Arrange layout vertically */
+    height: 100vh;
+    background-color: var(--ui-bg); /* Use variable */
+}
+
+#app-container {
+    display: flex;
+    flex-grow: 1; /* Canvas container takes remaining height */
+    width: 100vw;
+    overflow: hidden; /* Prevent content inside from overflowing and potentially causing clipping */
+}
+
+/* Existing Theme overrides */
+body.theme-dark {
+    --ui-bg: #333;
+    --panel-bg: #222;
+    --panel-text-color: #eee;
+    --panel-border: 1px solid #444;
+    --panel-heading-border: 1px solid #555;
+    --button-bg: #444;
+    --button-hover-bg: #555;
+    --button-active-bg: #666;
+    --button-border: 1px solid #555;
+    --canvas-border: 1px solid #444;
+    /* Dark Theme Logo/Title */
+    --logo-color: #eee;
+    --title-color: #eee;
+}
+
+body.theme-ocean {
+     --ui-bg: #a8dadc;
+     --panel-bg: #457b9d;
+     --panel-text-color: #1d3557;
+     --panel-border: 1px solid #a8dadc;
+     --panel-heading-border: 1px solid #a8dadc;
+     --button-bg: #a8dadc;
+     --button-hover-bg: #1d3557;
+     --button-active-bg: #f1faee;
+     --button-border: 1px solid #1d3557;
+     --canvas-border: 1px solid #1d3557;
+    /* Ocean Theme Logo/Title */
+    --logo-color: #1d3557;
+    --title-color: #1d3557;
+}
+
+/* Added New Theme Overrides Below */
+body.theme-forest {
+    --ui-bg: #c8e6c9; /* Light Green */
+    --panel-bg: #4caf50; /* Green */
+    --panel-text-color: #1b5e20; /* Dark Green */
+    --panel-border: 1px solid #388e3c; /* Medium Green */
+    --panel-heading-border: 1px solid #388e3c;
+    --button-bg: #81c784; /* Light Green */
+    --button-hover-bg: #66bb6a; /* Medium Light Green */
+    --button-active-bg: #4caf50; /* Green */
+    --button-border: 1px solid #388e3c;
+    --canvas-border: 1px solid #388e3c;
+    --logo-color: #1b5e20;
+    --title-color: #1b5e20;
+}
+
+body.theme-sunset {
+    --ui-bg: #fff9c4; /* Light Yellow */
+    --panel-bg: #ffcc80; /* Light Orange */
+    --panel-text-color: #e65100; /* Dark Orange */
+    --panel-border: 1px solid #fb8c00; /* Orange */
+    --panel-heading-border: 1px solid #fb8c00;
+    --button-bg: #ffeb3b; /* Yellow */
+    --button-hover-bg: #fbc02d; /* Darker Yellow */
+    --button-active-bg: #ff9800; /* Orange */
+    --button-border: 1px solid #fb8c00;
+    --canvas-border: 1px solid #fb8c00;
+    --logo-color: #e65100;
+    --title-color: #e65100;
+}
+
+body.theme-midnight {
+    --ui-bg: #263238; /* Dark Blue Grey */
+    --panel-bg: #37474f; /* Slightly Lighter Blue Grey */
+    --panel-text-color: #eceff1; /* Light Blue Grey */
+    --panel-border: 1px solid #455a64; /* Medium Blue Grey */
+    --panel-heading-border: 1px solid #455a64;
+    --button-bg: #455a64; /* Medium Blue Grey */
+    --button-hover-bg: #546e7a; /* Even Lighter Blue Grey */
+    --button-active-bg: #607d8b; /* Lighter Blue Grey */
+    --button-border: 1px solid #546e7a;
+    --canvas-border: 1px solid #546e7a;
+    --logo-color: #eceff1;
+    --title-color: #eceff1;
+}
+
+body.theme-pastel {
+    --ui-bg: #f8bbd0; /* Pastel Pink */
+    --panel-bg: #e1bee7; /* Pastel Purple */
+    --panel-text-color: #4a148c; /* Dark Purple */
+    --panel-border: 1px solid #ce93d8; /* Medium Purple */
+    --panel-heading-border: 1px solid #ce93d8;
+    --button-bg: #e1bee7; /* Pastel Purple */
+    --button-hover-bg: #ce93d8; /* Medium Purple */
+    --button-active-bg: #ba68c8; /* Slightly Darker Purple */
+    --button-border: 1px solid #ce93d8;
+    --canvas-border: 1px solid #ce93d8;
+    --logo-color: #4a148c;
+    --title-color: #4a148c;
+}
+
+body.theme-high-contrast {
+    --ui-bg: #1a1a1a; /* Very Dark */
+    --panel-bg: #0d0d0d; /* Even Darker */
+    --panel-text-color: #00ffff; /* Cyan */
+    --panel-border: 1px solid #ff00ff; /* Magenta */
+    --panel-heading-border: 1px solid #ff00ff;
+    --button-bg: #333333; /* Dark Grey */
+    --button-hover-bg: #555555; /* Medium Grey */
+    --button-active-bg: #00ffff; /* Cyan */
+    --button-border: 1px solid #ff00ff;
+    --canvas-border: 1px solid #ff00ff;
+    --logo-color: #00ff00;
+    --title-color: #ffff00; /* Use neon yellow for contrast */
+}
+
+body.theme-desert {
+    --ui-bg: #fff9c4; /* Light Yellow */
+    --panel-bg: #ffecb3; /* Lighter Orange */
+    --panel-text-color: #795548; /* Brown */
+    --panel-border: 1px solid #d7ccc8; /* Light Brown */
+    --panel-heading-border: 1px solid #d7ccc8;
+    --button-bg: #d7ccc8; /* Light Brown */
+    --button-hover-bg: #bcaaa4; /* Medium Brown */
+    --button-active-bg: #8d6e63; /* Darker Brown */
+    --button-border: 1px solid #bcaaa4;
+    --canvas-border: 1px solid #bcaaa4;
+    --logo-color: #795548;
+    --title-color: #795548;
+}
+
+body.theme-arctic {
+    --ui-bg: #e1f5fe; /* Very Light Blue */
+    --panel-bg: #b3e5fc; /* Light Blue */
+    --panel-text-color: #01579b; /* Dark Blue */
+    --panel-border: 1px solid #81d4fa; /* Medium Light Blue */
+    --panel-heading-border: 1px solid #81d4fa;
+    --button-bg: #81d4fa; /* Medium Light Blue */
+    --button-hover-bg: #4fc3f7; /* Medium Blue */
+    --button-active-bg: #29b6f6; /* Slightly Darker Blue */
+    --button-border: 1px solid #4fc3f7;
+    --canvas-border: 1px solid #4fc3f7;
+    --logo-color: #01579b;
+    --title-color: #01579b;
+}
+
+body.theme-candy {
+    --ui-bg: #fce4ec; /* Very Light Pink */
+    --panel-bg: #f48fb1; /* Pink */
+    --panel-text-color: #880e4f; /* Dark Pink */
+    --panel-border: 1px solid #f06292; /* Medium Pink */
+    --panel-heading-border: 1px solid #f06292;
+    --button-bg: #f8bbd0; /* Light Pink */
+    --button-hover-bg: #f48fb1; /* Pink */
+    --button-active-bg: #ec407a; /* Darker Pink */
+    --button-border: 1px solid #f06292;
+    --canvas-border: 1px solid #f06292;
+    --logo-color: #880e4f;
+    --title-color: #880e4f;
+}
+
+body.theme-lavender {
+    --ui-bg: #e1bee7; /* Very Light Purple */
+    --panel-bg: #ce93d8; /* Light Purple */
+    --panel-text-color: #4a148c; /* Dark Purple */
+    --panel-border: 1px solid #ba68c8; /* Medium Purple */
+    --panel-heading-border: 1px solid #ba68c8;
+    --button-bg: #e1bee7; /* Very Light Purple */
+    --button-hover-bg: #ce93d8; /* Light Purple */
+    --button-active-bg: #ba68c8; /* Medium Purple */
+    --button-border: 1px solid #ba68c8;
+    --canvas-border: 1px solid #ba68c8;
+    --logo-color: #4a148c;
+    --title-color: #4a148c;
+}
+
+body.theme-graphite {
+    --ui-bg: #424242; /* Dark Grey */
+    --panel-bg: #212121; /* Very Dark Grey */
+    --panel-text-color: #e0e0e0; /* Light Grey */
+    --panel-border: 1px solid #616161; /* Medium Dark Grey */
+    --panel-heading-border: 1px solid #616161;
+    --button-bg: #616161; /* Medium Dark Grey */
+    --button-hover-bg: #757575; /* Medium Grey */
+    --button-active-bg: #9e9e9e; /* Lighter Grey */
+    --button-border: 1px solid #757575;
+    --canvas-border: 1px solid #757575;
+    --logo-color: #e0e0e0;
+    --title-color: #e0e0e0;
+}
+
+body.theme-sunrise {
+    --ui-bg: #ffecb3; /* Lighter Orange */
+    --panel-bg: #ffccbc; /* Light Salmon */
+    --panel-text-color: #bf360c; /* Dark Red Orange */
+    --panel-border: 1px solid #ffab91; /* Medium Salmon */
+    --panel-heading-border: 1px solid #ffab91;
+    --button-bg: #ffccbc; /* Light Salmon */
+    --button-hover-bg: #ffab91; /* Medium Salmon */
+    --button-active-bg: #ff8a65; /* Orange Salmon */
+    --button-border: 1px solid #ffab91;
+    --canvas-border: 1px solid #ffab91;
+    --logo-color: #bf360c;
+    --title-color: #bf360c;
+}
+
+body.theme-industrial {
+    --ui-bg: #cfd8dc; /* Light Blue Grey */
+    --panel-bg: #90a4ae; /* Medium Blue Grey */
+    --panel-text-color: #263238; /* Dark Blue Grey */
+    --panel-border: 1px solid #78909c; /* Slightly Darker Blue Grey */
+    --panel-heading-border: 1px solid #78909c;
+    --button-bg: #b0bec5; /* Lighter Medium Blue Grey */
+    --button-hover-bg: #90a4ae; /* Medium Blue Grey */
+    --button-active-bg: #78909c; /* Slightly Darker Blue Grey */
+    --button-border: 1px solid #90a4ae;
+    --canvas-border: 1px solid #90a4ae;
+    --logo-color: #263238;
+    --title-color: #263238;
+}
+
+body.theme-retro {
+    --ui-bg: #c5e1a5; /* Light Green */
+    --panel-bg: #ffd54f; /* Yellow Orange */
+    --panel-text-color: #5d4037; /* Brown */
+    --panel-border: 1px solid #ffb300; /* Darker Yellow Orange */
+    --panel-heading-border: 1px solid #ffb300;
+    --button-bg: #ffe082; /* Light Yellow Orange */
+    --button-hover-bg: #ffd54f; /* Yellow Orange */
+    --button-active-bg: #ffb300; /* Darker Yellow Orange */
+    --button-border: 1px solid #ffd54f;
+    --canvas-border: 1px solid #ffd54f;
+    --logo-color: #5d4037;
+    --title-color: #5d4037;
+}
+
+body.theme-tropical {
+    --ui-bg: #e0f2f7; /* Very Light Cyan */
+    --panel-bg: #80deea; /* Cyan */
+    --panel-text-color: #004d40; /* Dark Cyan */
+    --panel-border: 1px solid #4dd0e1; /* Medium Cyan */
+    --panel-heading-border: 1px solid #4dd0e1;
+    --button-bg: #b2ebf2; /* Light Cyan */
+    --button-hover-bg: #80deea; /* Cyan */
+    --button-active-bg: #4dd0e1; /* Medium Cyan */
+    --button-border: 1px solid #4dd0e1;
+    --canvas-border: 1px solid #4dd0e1;
+    --logo-color: #004d40;
+    --title-color: #004d40;
+}
+
+body.theme-autumn {
+    --ui-bg: #ffe0b2; /* Light Orange */
+    --panel-bg: #ffab91; /* Light Red */
+    --panel-text-color: #3e2723; /* Dark Brown */
+    --panel-border: 1px solid #d84315; /* Dark Orange */
+    --panel-heading-border: 1px solid #d84315;
+    --button-bg: #ffccbc; /* Light Salmon */
+    --button-hover-bg: #ffab91; /* Light Red */
+    --button-active-bg: #ef6c00; /* Orange */
+    --button-border: 1px solid #d84315;
+    --canvas-border: 1px solid #d84315;
+    --logo-color: #3e2723;
+    --title-color: #3e2723;
+}
+
+body.theme-winter {
+    --ui-bg: #e3f2fd; /* Very Light Blue */
+    --panel-bg: #bbdefb; /* Light Blue */
+    --panel-text-color: #0d47a1; /* Very Dark Blue */
+    --panel-border: 1px solid #90caf9; /* Medium Light Blue */
+    --panel-heading-border: 1px solid #90caf9;
+    --button-bg: #e3f2fd; /* Very Light Blue */
+    --button-hover-bg: #bbdefb; /* Light Blue */
+    --button-active-bg: #90caf9; /* Medium Light Blue */
+    --button-border: 1px solid #90caf9;
+    --canvas-border: 1px solid #90caf9;
+    --logo-color: #0d47a1;
+    --title-color: #0d47a1;
+}
+
+body.theme-spring {
+    --ui-bg: #f1f8e9; /* Very Light Green */
+    --panel-bg: #c5e1a5; /* Light Green */
+    --panel-text-color: #33691e; /* Dark Green */
+    --panel-border: 1px solid #aed581; /* Medium Light Green */
+    --panel-heading-border: 1px solid #aed581;
+    --button-bg: #e1f5fe; /* Light Blue */
+    --button-hover-bg: #c5e1a5; /* Light Green */
+    --button-active-bg: #9ccc65; /* Green */
+    --button-border: 1px solid #aed581;
+    --canvas-border: 1px solid #aed581;
+    --logo-color: #33691e;
+    --title-color: #33691e;
+}
+
+body.theme-summer {
+    --ui-bg: #fff9c4; /* Light Yellow */
+    --panel-bg: #ffe082; /* Light Yellow Orange */
+    --panel-text-color: #f57f17; /* Dark Yellow */
+    --panel-border: 1px solid #ffca28; /* Yellow */
+    --panel-heading-border: 1px solid #ffca28;
+    --button-bg: #fff9c4; /* Light Yellow */
+    --button-hover-bg: #ffe082; /* Light Yellow Orange */
+    --button-active-bg: #ffca28; /* Yellow */
+    --button-border: 1px solid #ffca28;
+    --canvas-border: 1px solid #ffca28;
+    --logo-color: #f57f17;
+    --title-color: #f57f17;
+}
+
+body.theme-royal {
+    --ui-bg: #e0e0e0; /* Light Grey */
+    --panel-bg: #7e57c2; /* Deep Purple */
+    --panel-text-color: #f3e5f5; /* Very Light Purple */
+    --panel-border: 1px solid #673ab7; /* Purple */
+    --panel-heading-border: 1px solid #673ab7;
+    --button-bg: #ba68c8; /* Medium Purple */
+    --button-hover-bg: #9575cd; /* Lighter Purple */
+    --button-active-bg: #7e57c2; /* Deep Purple */
+    --button-border: 1px solid #673ab7;
+    --canvas-border: 1px solid #673ab7;
+    --logo-color: #f3e5f5;
+    --title-color: #f3e5f5;
+}
+
+body.theme-neon {
+    --ui-bg: #0d0d0d; /* Very Dark */
+    --panel-bg: #1a1a1a; /* Dark */
+    --panel-text-color: #00ff00; /* Neon Green */
+    --panel-border: 1px solid #ff00ff; /* Neon Magenta */
+    --panel-heading-border: 1px solid #00ffff; /* Neon Cyan */
+    --button-bg: #333333; /* Dark Grey */
+    --button-hover-bg: #555555; /* Medium Grey */
+    --button-active-bg: #ffff00; /* Neon Yellow */
+    --button-border: 1px solid #ff00ff;
+    --canvas-border: 1px solid #00ffff;
+    --logo-color: #00ff00;
+    --title-color: #ffff00; /* Use neon yellow for contrast */
+}
+
+/* Splash Screen Styles */
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #1a1a1a; /* Dark background */
+    color: #f0f0f0; /* Light text color */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's on top */
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#splash-logo {
+    max-width: 80%;
+    max-height: 50vh;
+    margin-bottom: 30px;
+}
+
+#splash-buttons button {
+    background-color: #444;
+    color: #eee;
+    border: 1px solid #666;
+    padding: 12px 25px;
+    margin: 0 10px;
+    font-size: 1.1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+#splash-buttons button:hover {
+    background-color: #555;
+}
+
+#splash-buttons button:active {
+    background-color: #333;
+    transform: scale(0.98);
+}
+
+#tool-panel {
+    width: 250px; /* Slightly wider panel */
+    background-color: var(--panel-bg); /* Use variable */
+    color: var(--panel-text-color); /* Use variable */
+    padding: 15px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+/* New: Logo Section Styling */
+#logo-section {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between logo and title */
+    margin-bottom: 15px; /* Space below logo section */
+    border-bottom: var(--panel-heading-border); /* Match heading border */
+    padding-bottom: 10px;
+}
+
+#logo-section img {
+    height: 30px; /* Set a fixed height for the logo image */
+    width: auto; /* Maintain aspect ratio */
+     /* Optional: Add border or background if needed */
+}
+
+#logo-section h1 {
+    margin: 0; /* Remove default margin */
+    font-size: 1.4em; /* Slightly larger font for the main title */
+    font-weight: bold;
+    color: var(--title-color); /* Use variable for title color */
+}
+
+#tool-panel h2 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+    border-bottom: var(--panel-heading-border); /* Use variable */
+    padding-bottom: 5px;
+    color: var(--panel-text-color); /* Ensure heading color uses variable */
+}
+
+#tool-panel h3 {
+    margin-top: 5px; /* Smaller margin than h2 */
+    margin-bottom: 5px;
+    font-size: 1em;
+    padding-bottom: 0px; /* No border */
+    border-bottom: none;
+    color: var(--panel-text-color); /* Ensure heading color uses variable */
+}
+
+#tool-panel label {
+    margin-bottom: 2px;
+}
+
+#tool-panel button {
+    padding: 8px;
+    cursor: pointer;
+    border: var(--button-border); /* Use variable */
+    background-color: var(--button-bg); /* Use variable */
+    color: inherit; /* Inherit text color from panel */
+    border-radius: 4px;
+    text-align: left; /* Align text left */
+}
+
+#tool-panel button[data-width] {
+    width: 100%; /* Make them fill the width */
+    text-align: center; /* Center the text */
+}
+
+#tool-panel button:hover:not(:disabled) {
+    background-color: var(--button-hover-bg); /* Use variable */
+     /* Add explicit text color change for hover if needed for contrast */
+     body.theme-ocean & { color: var(--ui-bg); } /* ocean specific hover text */
+     body.theme-high-contrast &:hover { color: #ff00ff; } /* High contrast hover text */
+     body.theme-neon &:hover { color: #ff00ff; } /* Neon hover text */
+}
+
+#tool-panel button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+#tool-panel button.active {
+    background-color: var(--button-active-bg); /* Use variable */
+    border-color: inherit; /* Inherit border from button */
+     /* Add explicit text color change for active if needed for contrast */
+     body.theme-high-contrast & { color: #0d0d0d; } /* High contrast active text */
+     body.theme-neon & { color: #1a1a1a; } /* Neon active text */
+}
+
+/* Style for select dropdown */
+#tool-panel select {
+    padding: 8px;
+    border: var(--button-border);
+    background-color: var(--button-bg);
+    color: inherit;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#canvas-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevent canvas overflow */
+    padding: 20px; /* Add some padding around the canvas */
+    box-sizing: border-box;
+}
+
+#animation-canvas {
+    border: var(--canvas-border); /* Use variable */
+    background-color: white; /* Canvas background - This will be overridden by JS drawing */
+    /* Size will be set by JS */
+    display: block; /* Prevent extra space below canvas */
+    max-width: 100%; /* Ensure canvas fits in container */
+    max-height: 100%;
+    object-fit: contain; /* Keep aspect ratio */
+}
+
+#frame-timeline-container {
+    height: 100px; /* Fixed height for timeline area */
+    background-color: var(--panel-bg); /* Use panel background for consistency */
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    flex-shrink: 0; /* Prevent shrinking */
+    width: 100%;
+    overflow-x: auto; /* Make the container scrollable */
+}
+
+#frame-timeline {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    gap: 5px;
+    min-width: fit-content; /* Allow content to define width */
+}
+
+.frame-thumbnail {
+    width: 80px; /* Slightly larger thumbnail */
+    height: 80px;
+    border: var(--button-border); /* Use variable */
+    background-color: var(--button-bg); /* Use variable */
+    color: var(--panel-text-color); /* Use variable */
+    display: flex;
+    flex-direction: column; /* Stack number and canvas */
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.8em;
+    position: relative;
+    padding-top: 15px; /* Space for frame number */
+    box-sizing: border-box;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+.frame-thumbnail span {
+    position: absolute;
+    top: 2px;
+    left: 5px;
+    font-size: 0.7em;
+    color: inherit; /* Inherit text color */
+}
+
+.frame-thumbnail canvas {
+    width: 100%;
+    height: calc(100% - 15px); /* Adjust height for number */
+    display: block;
+    object-fit: contain;
+    image-rendering: pixelated; /* Helps with low-res previews */
+     /* No border here, border is on the parent thumbnail div */
+}
+
+.frame-thumbnail.active {
+    border-color: blue; /* Keep blue for active frame indicator? Or change based on theme? */
+    border-width: 2px;
+     /* Let's keep blue for now, it's a standard indicator */
+     /* body.theme-dark & { border-color: #0af; } */
+     /* body.theme-ocean & { border-color: #1d3557; } */
+}
+
+.frame-thumbnail.dragging {
+    opacity: 0.5;
+    border-style: dashed !important; /* Use !important to override other border styles like active */
+    border-color: #007bff !important; /* A distinct color for dragging */
+}
+
+.frame-thumbnail.drag-over-before {
+    /* Indicates drop target on the left side */
+    box-shadow: inset 3px 0 0 #007bff; 
+}
+
+.frame-thumbnail.drag-over-after {
+    /* Indicates drop target on the right side */
+    box-shadow: inset -3px 0 0 #007bff;
+}
+
+/* Tutorial Styles */
+#tutorial-popup {
+    position: fixed; /* Use fixed to position relative to viewport */
+    background-color: var(--panel-bg);
+    color: var(--panel-text-color);
+    border: 2px solid var(--button-active-bg); /* Use a theme-aware color */
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 2000; /* Ensure it's on top of everything */
+    max-width: 300px; /* Prevent it from being too wide */
+    min-width: 200px; /* Ensure it's wide enough for buttons */
+    font-size: 0.9em;
+    line-height: 1.4;
+    /* display: none;  Initially hidden - JS controls this */
+}
+
+#tutorial-message {
+    margin-bottom: 15px;
+}
+
+#tutorial-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Space between buttons */
+}
+
+#tutorial-navigation button {
+    flex-grow: 1; /* Allow buttons to share space */
+    padding: 8px;
+    cursor: pointer;
+    border: var(--button-border);
+    background-color: var(--button-bg);
+    color: inherit; /* Inherit text color from panel */
+    border-radius: 4px;
+}
+
+#tutorial-navigation button:hover:not(:disabled) {
+    background-color: var(--button-hover-bg);
+}
+
+#tutorial-navigation button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.tutorial-highlight {
+    outline: 3px dashed var(--button-active-bg); /* Theme-aware dashed outline */
+    box-shadow: 0 0 15px var(--button-active-bg); /* Theme-aware glow effect */
+    position: relative; /* Needed for z-index stacking context if elements overlap */
+    z-index: 1500; /* Ensure highlighted element is above others but below popup */
+    border-radius: 4px; /* Optional: round corners of highlight a bit */
+    transition: outline 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for highlight effect */
+}
+
+/* Make sure the highlighted element itself does not intercept clicks meant for the tutorial popup */
+.tutorial-highlight * {
+    pointer-events: none;
+}

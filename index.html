@@ -1,0 +1,146 @@
+<html>
+<head>
+    <title>Artstation</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/ChatGPT Image May 10, 2025, 09_34_15 PM.png" type="image/png">
+    <script type="importmap">
+        {
+            "imports": {
+                "webm-writer": "https://cdn.skypack.dev/webm-writer"
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="splash-screen">
+        <img src="/ChatGPT Image May 10, 2025, 09_34_15 PM.png" alt="Artstation Startup Logo" id="splash-logo">
+        <div id="splash-buttons">
+            <button id="get-started-button">Get Started</button>
+            <button id="cancel-startup-button">Cancel</button>
+        </div>
+    </div>
+
+    <div id="app-container" style="display: none;">
+        <div id="tool-panel">
+            <div id="logo-section">
+                <img src="/ChatGPT Image May 10, 2025, 09_34_15 PM.png" alt="Artstation Logo">
+                <h1>Artstation</h1>
+            </div>
+
+            <h2>Tools</h2>
+            <button id="tool-pen" class="tool-button active" data-tool="pen">Pen</button>
+            <button id="tool-eraser" class="tool-button" data-tool="eraser">Eraser</button>
+            <button id="tool-fill" class="tool-button" data-tool="fill">Fill Bucket</button>
+
+            <h2>Drawing</h2>
+            <label for="color-picker">Color:</label>
+            <input type="color" id="color-picker" value="#000000">
+            <label for="brush-size">Size:</label>
+            <input type="range" id="brush-size" min="1" max="50" value="5">
+
+            <h2>Onion Skin</h2>
+            <input type="checkbox" id="onion-skin-toggle" checked>
+            <label for="onion-skin-toggle">Enable</label>
+            <br>
+            <label for="onion-skin-prev">Previous (count):</label>
+            <input type="number" id="onion-skin-prev" min="0" max="5" value="1">
+            <br>
+            <label for="onion-skin-next">Next (count):</label>
+            <input type="number" id="onion-skin-next" min="0" max="5" value="0">
+            <br>
+            <label for="onion-skin-prev-opacity">Previous Opacity:</label>
+            <input type="range" id="onion-skin-prev-opacity" min="0.05" max="0.5" step="0.01" value="0.2">
+            <br>
+            <label for="onion-skin-next-opacity">Next Opacity:</label>
+            <input type="range" id="onion-skin-next-opacity" min="0.05" max="0.5" step="0.01" value="0.2">
+
+            <h2>Frames</h2>
+            <button id="add-frame">Add Frame</button>
+            <button id="delete-frame">Delete Frame</button>
+            <button id="duplicate-frame">Duplicate Frame</button>
+            <br>
+            <label for="fps-input">FPS:</label>
+            <input type="number" id="fps-input" min="1" max="60" value="12">
+
+            <h2>Animation</h2>
+            <button id="play-animation">Play</button>
+            <button id="stop-animation">Stop</button>
+            <br>
+            <input type="checkbox" id="loop-animation" checked>
+            <label for="loop-animation">Loop Animation</label>
+
+            <h2>Canvas Size</h2>
+            <div>
+                <label for="canvas-width">Width:</label>
+                <input type="number" id="canvas-width" min="100" value="800"> px
+            </div>
+            <div>
+                <label for="canvas-height">Height:</label>
+                <input type="number" id="canvas-height" min="100" value="600"> px
+            </div>
+            <button id="apply-canvas-size">Apply Size (Clears Frames)</button>
+
+            <h3>Preset Sizes</h3>
+            <button data-width="800" data-height="600">Default (4:3)</button>
+            <button data-width="1920" data-height="1080">HD (16:9)</button>
+            <button data-width="1080" data-height="1920">TikTok/Reels (9:16)</button>
+            <button data-width="1080" data-height="1080">Square (1:1)</button>
+
+            <h2>File</h2>
+            <button id="export-animation">Export as JSON</button>
+            <button id="export-video">Export as Video (WebM)</button>
+            <button id="import-animation">Import Animation</button>
+            <input type="file" id="import-file-input" accept=".json,.animation" style="display: none;">
+            <button id="export-frame-image">Export Current Frame as Image (PNG)</button>
+
+            <h2>Theme</h2>
+            <select id="theme-select">
+                <option value="default">Default (Light)</option>
+                <option value="dark">Dark</option>
+                <option value="ocean">Ocean</option>
+                <option value="forest">Forest</option>
+                <option value="sunset">Sunset</option>
+                <option value="midnight">Midnight</option>
+                <option value="pastel">Pastel</option>
+                <option value="high-contrast">High Contrast</option>
+                <option value="desert">Desert</option>
+                <option value="arctic">Arctic</option>
+                <option value="candy">Candy</option>
+                <option value="lavender">Lavender</option>
+                <option value="graphite">Graphite</option>
+                <option value="sunrise">Sunrise</option>
+                <option value="industrial">Industrial</option>
+                <option value="retro">Retro</option>
+                <option value="tropical">Tropical</option>
+                <option value="autumn">Autumn</option>
+                <option value="winter">Winter</option>
+                <option value="spring">Spring</option>
+                <option value="summer">Summer</option>
+                <option value="royal">Royal</option>
+                <option value="neon">Neon</option>
+            </select>
+
+        </div>
+        <div id="canvas-container">
+            <canvas id="animation-canvas"></canvas>
+        </div>
+    </div>
+    <div id="frame-timeline-container" style="display: none;">
+        <div id="frame-timeline">
+            <!-- Frame previews/buttons will go here -->
+        </div>
+    </div>
+
+    <!-- Tutorial Popup will be added here by JS if needed, or can be predefined -->
+    <!-- <div id="tutorial-popup" style="display: none;">
+        <div id="tutorial-message"></div>
+        <div id="tutorial-navigation">
+            <button id="tutorial-prev">Previous</button>
+            <button id="tutorial-next">Next</button>
+            <button id="tutorial-skip">Skip Tutorial</button>
+        </div>
+    </div> -->
+
+    <script src="script.js" type="module"></script>
+</body>
+</html>
